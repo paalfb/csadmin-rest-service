@@ -1,0 +1,4 @@
+curlservice.hostname: localhost
+curlservice.db.name: curlservicedb
+curlservice.db.port: 27017
+curlservice.curls.collection: curls_collection
