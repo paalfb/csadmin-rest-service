@@ -1,7 +1,7 @@
 
 node {
 
-    df mvnHome = '/Users/palborjeson/utvikling/apache-maven-3.5.4'
+    def mvnHome = '/Users/palborjeson/utvikling/apache-maven-3.5.4'
     def releaseVersion
 
     stage('Prepare') {
