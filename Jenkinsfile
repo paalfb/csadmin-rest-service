@@ -2,7 +2,6 @@
 node {
     stage('Prepare') {
         cleanWs()
-
     }
 
     stage('Checkout') {
@@ -19,6 +18,10 @@ node {
         }
     } catch(Exception e) {
         echo 'what a bummer'
+    }
+
+    stage('Package') {
+        sh 'mvn package'
     }
 
 }
