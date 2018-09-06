@@ -1,5 +1,9 @@
 
 node {
+
+    df mvnHome = '/Users/palborjeson/utvikling/apache-maven-3.5.4'
+    def releaseVersion
+
     stage('Prepare') {
         cleanWs()
     }
@@ -19,9 +23,12 @@ node {
     } catch(Exception e) {
         echo 'what a bummer'
     }
-
     stage('Package') {
-        sh 'mvn package'
-    }
+        pom = readMavenPom file: 'pom.xml'
+        releaseVersion = pom.version.split("-")[0]
+        sh "'${mvnHome}/bin/mvn' --batch-mode release:prepare"
+        sh "'${mvnHome}/bin/mvn' --batch-mode release:perform"
+        echo releaseVersion
 
+    }
 }
