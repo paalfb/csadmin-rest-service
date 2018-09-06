@@ -144,6 +144,12 @@
         <tag>csadmin-rest-service-1.0.0</tag>
     </scm>
 
+    <distributionManagement>
+        <repository>
+            <id>localhost</id>
+            <url>http://localhost:8081/repository/maven-releases</url>
+        </repository>
+    </distributionManagement>
 
     <pluginRepositories>
         <pluginRepository>
