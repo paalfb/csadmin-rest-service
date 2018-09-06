@@ -10,7 +10,7 @@ node {
         sh 'cd tmp_build'
         sh 'git init'
         withCredentials([string(credentialsId: 'cs-token', variable: 'CS_TOKEN')]) {
-            sh 'git pull https://{CS_TOKEN}'@github.com/paalfb/csadmin-rest-service.git'
+            sh 'git pull https://{CS_TOKEN}@github.com/paalfb/csadmin-rest-service.git'
         }
     }
     try {
