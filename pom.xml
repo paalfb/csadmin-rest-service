@@ -123,6 +123,11 @@
             </build>
             <repositories>
                 <repository>
+                    <id>nexus-internal</id>
+                        <name>NAV internal Nexus</name>
+                        <url>https://repo.adeo.no/repository/maven-releases</url>
+                </repository>
+                <repository>
                     <id>spring-releases</id>
                     <url>https://repo.spring.io/libs-release</url>
                 </repository>
@@ -146,9 +151,15 @@
 
     <distributionManagement>
         <repository>
-            <id>nexus-internal</id>
+            <id>local-releases</id>
             <url>http://localhost:8081/repository/maven-releases</url>
         </repository>
+        <snapshotRepository>
+            <id>m2snapshot</id>
+            <name>Local Maven2 Snapshot Repository</name>
+            <url>http://localhost:8081/repository/maven-snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
     </distributionManagement>
 
     <pluginRepositories>
