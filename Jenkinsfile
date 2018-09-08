@@ -31,6 +31,13 @@ node {
         echo releaseVersion
 
     }
+      stage('docker build') {
+           withCredentials([usernamePassword(credentialsId: 'docker-uploader', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
+               sh "docker login -u ${env.NEXUS_USERNAME} -p ${env.NEXUS_PASSWORD} localhost:5443"
+               sh "docker build -t localhost:5443/cs-admin-rest-service:'${releaseVersion}' ."
+               sh "docker push localhost:5443/csadmin-rest-service:'${releaseVersion}'"
+           }
+       }
 
 
 }
