@@ -33,8 +33,8 @@ node {
     }
       stage('docker build') {
            withCredentials([usernamePassword(credentialsId: 'docker_uploader', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
-               sh 'echo ${env.NEXUS_USERNAME}'
-               sh "docker login -u ${env.NEXUS_USERNAME} -p ${env.NEXUS_PASSWORD} pals-mbp.adeo.no:8444"
+               sh 'echo ${NEXUS_USERNAME}'
+               sh "docker login -u ${NEXUS_USERNAME} -p ${NEXUS_PASSWORD} pals-mbp.adeo.no:8444"
                sh "docker build -t pals-mbp.adeo.no:8444/csadmin-rest-service:'${releaseVersion}' ."
                sh "docker push pals-mbp.adeo.no:8444/csadmin-rest-service:'${releaseVersion}'"
            }
